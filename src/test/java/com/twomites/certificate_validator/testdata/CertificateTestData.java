@@ -2,6 +2,8 @@ package com.twomites.certificate_validator.testdata;
 
 import java.util.List;
 
+import com.twomites.certificate_validator.testdata.CertificateTestData.BadSslTestCase;
+
 public class CertificateTestData {
 
     public record BadSslTestCase(
@@ -52,6 +54,7 @@ public class CertificateTestData {
                 "untrusted-root.badssl.com",
                 true, true, true, false
             )
+
         );
     }
 }

@@ -42,9 +42,9 @@ public class CertificateController {
             String scheme = uri.getScheme();
             String host = uri.getHost();
 
-            System.out.println("URL: " + url);
-            System.out.println("Scheme: " + scheme);
-            System.out.println("Host: " + host);
+            //System.out.println("URL: " + url);
+            //System.out.println("Scheme: " + scheme);
+            //System.out.println("Host: " + host);
             
             if (scheme == null || host == null) {
                 throw new IllegalArgumentException(
@@ -53,7 +53,7 @@ public class CertificateController {
 
             ConnectionProtocol protocol = resolveProtocol(scheme);
 
-            System.out.println("Protocol: " + protocol);
+            //System.out.println("Protocol: " + protocol);
 
              // Null allows the service to resolve the default port
             Integer port = uri.getPort() == -1

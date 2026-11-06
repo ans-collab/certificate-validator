@@ -91,7 +91,7 @@ public class CertificateValidationService {
         X509Certificate leafCertificate = certificates[0];
 
         boolean hostnameValid =
-                hostnameValidator.isValid(leafCertificate, host);
+                hostnameValidator.isValid(leafCertificate, host, null);
 
         // 6. Validate the certificate chain.
         boolean chainValid = chainValidator.isValid(

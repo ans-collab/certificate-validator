@@ -37,6 +37,19 @@ public class HostnameValidator {
         return matchesHostname(certificate, hostname);
     } 
 
+    //overload for now in case this will be modified to accept URL
+    public boolean isValid(X509Certificate certificate, String hostname, String url) {
+        if (certificate == null) {
+            throw new IllegalArgumentException (
+                    "Certificate cannot be null"
+            );
+        }
+       
+        return matchesHostname(certificate, hostname);
+    } 
+
+
+
     public boolean matchesHostname(X509Certificate certificate, String hostname) {
         if (hostname == null || hostname.isBlank()) {
             throw new IllegalArgumentException (
@@ -47,7 +60,7 @@ public class HostnameValidator {
         try {
             Collection<List<?>> sans = certificate.getSubjectAlternativeNames();
 
-            if (sans != null) {
+            if (sans == null) {
                 return false;
             }
 
