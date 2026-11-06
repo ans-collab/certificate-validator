@@ -44,7 +44,7 @@ jobs:
     - name: Download Build Artifact
       uses: actions/download-artifact@v4
       with:
-        name: joke-api-jar
+        name: certificate-validator
         path: target/
 
     - name: Test EC2 SSH connectivity
@@ -63,7 +63,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         port: 22
         source: "target/*.jar"
-        target: "/home/${{ secrets.EC2_USERNAME }}/joke-api"
+        target: "/home/${{ secrets.EC2_USERNAME }}/certificate-validator"
         strip_components: 1
 
     - name: Run JAR on Linux EC2 via SSH
