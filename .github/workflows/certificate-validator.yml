@@ -25,9 +25,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Set up JDK 26
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '26'
         distribution: 'temurin'
@@ -96,12 +96,12 @@ jobs:
           
           # Restart the systemd service
           echo "Restarting demo service..."
-          sudo systemctl restart demo
+          sudo systemctl restart certificate-validator
           
       
           # 3. Give it 3 seconds to spin up and verify it didn't crash instantly
           sleep 3
-          if pgrep -f "java-api-0.0.1-SNAPSHOT.jar" > /dev/null; then
+          if pgrep -f "certificate-validator-0.0.1-SNAPSHOT.jar" > /dev/null; then
             echo "Application successfully running in background."
           else
             echo "ERROR: Application failed to start. Check app.log for details."
