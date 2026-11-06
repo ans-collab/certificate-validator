@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CertificateExpiryValidator {
 
     /**
-     * validty-date checks
+     * validity-date checks
      */
 
     public boolean isValid(X509Certificate certificate) {
