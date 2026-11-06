@@ -1,0 +1,29 @@
+Certificate Validator API is running
+
+
+Usage
+=========================
+[server]:[port]/api/certificates/validate?url={serverThatSendsCertificate}
+
+
+Example
+========================
+localhost:8082/api/certificates/validate?url=https://untrusted-root.badssl.com
+
+
+
+JSON result
+========================
+{"host":"untrusted-root.badssl.com","port":443,"protocol":"HTTPS","valid":false,"expiryValid":true,"signatureValid":true,"hostnameValid":true,"chainValid":false,"message":"Certificate validation failed: Certificate chain is not trusted.","certificates":[{"subject":"CN=*.badssl.com,O=BadSSL,L=San Francisco,ST=California,C=US","issuer":"CN=BadSSL Untrusted Root Certificate Authority,O=BadSSL,L=San Francisco,ST=California,C=US","serialNumber":"d5552c9fc587c1d7","validFrom":"2026-11-03T21:00:28Z","validUntil":"2028-11-02T21:00:28Z"},{"subject":"CN=BadSSL Untrusted Root Certificate Authority,O=BadSSL,L=San Francisco,ST=California,C=US","issuer":"CN=BadSSL Untrusted Root Certificate Authority,O=BadSSL,L=San Francisco,ST=California,C=US","serialNumber":"97a0fcfad7e528fd","validFrom":"2016-07-07T06:31:35Z","validUntil":"2036-07-02T06:31:35Z"}]}
+
+
+
+UI Version
+========================
+[server]:[port]/api/certificates_ui
+
+
+Author
+========================
+https://www.linkedin.com/in/christinechavez/
+2026

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificate Validator</title>
+  <style>
+    body {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      font: 16px/1.5 system-ui, sans-serif;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.4rem 0 1rem;
+    }
+
+    button {
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+    }
+
+    pre {
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Certificate Validator</h1>
+  <p>Enter an HTTPS URL to inspect its server certificate.</p>
+
+  <form id="validation-form">
+    <label for="url">URL</label>
+    <input
+      id="url"
+      name="url"
+      type="url"
+      placeholder="https://example.com"
+      required>
+    <button type="submit">Validate certificate</button>
+  </form>
+
+  <h2>Result</h2>
+  <pre id="result" aria-live="polite">No validation run yet.</pre>
+
+  <script>
+    const form = document.getElementById("validation-form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const url = document.getElementById("url").value;
+      const endpoint =
+        `/api/certificates/validate?url=${encodeURIComponent(url)}`;
+
+      result.textContent = "Validating…";
+
+      try {
+        const response = await fetch(endpoint);
+        const body = await response.text();
+
+        try {
+          result.textContent = JSON.stringify(JSON.parse(body), null, 2);
+        } catch {
+          result.textContent = body;
+        }
+
+        if (!response.ok) {
+          result.textContent =
+            `Request failed (${response.status} ${response.statusText})\n\n`
+            + result.textContent;
+        }
+      } catch (error) {
+        result.textContent = `Request error: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
