@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/certificates")
 public class CertificateLandingPageController {
 
-    @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(
+    path = {"", "/"},
+    produces = MediaType.TEXT_PLAIN_VALUE
+    )
     public ResponseEntity<String> getMessage() throws IOException {
     ClassPathResource resource =
             new ClassPathResource("messages/certificates.txt");
