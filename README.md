@@ -11,7 +11,8 @@ An API for validating a certificate sent by a server. It checks that the followi
 ## URL
 
 ```
-https://
+http://ec2.two-mites.com/api/certificates/
+http://ec2.two-mites.com/api/certificates/validate?url={url}
 ```
  
 
