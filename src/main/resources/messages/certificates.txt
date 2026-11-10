@@ -3,12 +3,12 @@ Certificate Validator API is running
 
 Usage
 =========================
-[server]:[port]/api/certificates/validate?url={serverThatSendsCertificate}
+[server]/api/certificates/validate?url={serverThatSendsCertificate}
 
 
 Example
 ========================
-localhost:8082/api/certificates/validate?url=https://untrusted-root.badssl.com
+http://ec2.two-mites.com/api/certificates/validate?url=https://untrusted-root.badssl.com
 
 
 
@@ -20,7 +20,7 @@ JSON result
 
 UI Version
 ========================
-[server]:[port]/api/certificates_ui
+http://ec2.two-mites.com/api/certificates_ui
 
 
 Author
