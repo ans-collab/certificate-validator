@@ -20,7 +20,7 @@ JSON result
 
 UI Version
 ========================
-http://ec2.two-mites.com/api/certificates_ui
+http://ec2.two-mites.com:8082/api/certificates_ui
 
 
 Author
